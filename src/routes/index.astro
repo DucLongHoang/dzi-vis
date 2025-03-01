@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import AboutSection from "@/sections/AboutSection.astro"
+import ContactSection from "@/sections/ContactSection.astro"
+import HeroSection from "@/sections/HeroSection.astro"
+import PricingSection from "@/sections/PricingSection.astro"
+import GallerySection from "@/sections/GallerySection.astro"
+import ReferralsSection from "@/sections/ReferralsSection.astro"
+import ServicesSection from "@/sections/ServicesSection.astro"
+import { t } from "i18n:astro"
+---
+
+<BaseLayout title={t("title")} isHomePage>
+	<!-- <div class="grid min-h-[50dvh] place-content-center">
+		<h1 class="text-4xl font-bold md:text-6xl">Astro template</h1>
+	</div> -->
+	<!-- <div id="openseadragon1" class="size-full"></div>
+	<script>
+		import OpenSeadragon from "openseadragon"
+
+		var viewer = OpenSeadragon({
+			id: "openseadragon1",
+			prefixUrl: "../images/logmap_files/",
+			tileSources: "../images/logmap.dzi",
+		})
+	</script> -->
+
+	<HeroSection />
+	<ServicesSection />
+	<AboutSection />
+	<PricingSection />
+	<GallerySection />
+	<ReferralsSection />
+	<ContactSection />
+</BaseLayout>

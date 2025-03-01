@@ -1,0 +1,65 @@
+---
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { LINKS } from "@/config/links"
+import { getLocalePath, t } from "i18n:astro"
+---
+
+<form name="contact" method="post" action={getLocalePath(LINKS.thank_you)} data-netlify="true">
+	<div class="grid min-w-[280px] gap-y-8">
+		<div class="grid gap-y-3">
+			<Label htmlFor="name">{t("form.name.label")}*</Label>
+			<Input
+				id="name"
+				name="name"
+				className="rounded-xl"
+				type="text"
+				placeholder={t("form.name.placeholder")}
+				minLength={1}
+				maxLength={255}
+				required
+			/>
+		</div>
+
+		<div class="grid gap-y-3">
+			<Label htmlFor="email">{t("form.email.label")}*</Label>
+			<Input
+				id="email"
+				name="email"
+				className="rounded-xl"
+				type="email"
+				placeholder={t("form.email.placeholder")}
+				required
+			/>
+		</div>
+
+		<div class="grid gap-y-3">
+			<Label htmlFor="email">{t("form.phone.label")}*</Label>
+			<Input
+				id="phone"
+				name="phone"
+				className="rounded-xl"
+				type="tel"
+				placeholder={t("form.phone.placeholder")}
+				required
+			/>
+		</div>
+
+		<div class="grid gap-y-3">
+			<Label htmlFor="message">{t("form.message.label")}*</Label>
+			<Textarea
+				id="message"
+				name="message"
+				className="rounded-xl"
+				placeholder={t("form.message.placeholder")}
+				minLength={2}
+				maxLength={1000}
+				required
+			/>
+		</div>
+
+		<Button type="submit" variant={"default"} size={"lg"} className="text-lg">{t("form.submit")}</Button>
+	</div>
+</form>

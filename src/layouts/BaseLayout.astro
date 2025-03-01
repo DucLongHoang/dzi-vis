@@ -1,0 +1,135 @@
+---
+import Footer from "@/layouts/Footer.astro"
+import Header from "@/layouts/Header.astro"
+import "@/styles/globals.css"
+import Main from "./Main.astro"
+import APP_CONFIG from "@/config/config"
+import type { OgImage } from "@/lib/types"
+import { Schema } from "astro-seo-schema"
+// import { ClientRouter } from "astro:transitions"
+import I18nClient from "@astrolicious/i18n/components/I18nClient.astro"
+import { getLocale } from "i18n:astro"
+import Head from "@/components/Head.astro"
+
+type Props = {
+	title: string
+	isHomePage?: boolean
+}
+
+const og_image: OgImage = {
+	url: `${APP_CONFIG.SITE.URL}/images/og_image.jpeg`,
+	secureUrl: `${APP_CONFIG.SITE.URL}/images/og_image.jpeg`,
+	alt: APP_CONFIG.SITE.TITLE,
+	width: 1200,
+	height: 630,
+	type: "image/jpeg",
+}
+
+const { title, isHomePage }: Props = Astro.props
+---
+
+<html lang={getLocale()} class="scroll-smooth">
+	<Head title={title} isHomePage={isHomePage}>
+		{/* FAVICON */}
+		<Fragment slot="icons">
+			<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+			<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+			<link rel="shortcut icon" href="/favicon.ico" />
+			<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+			<meta name="apple-mobile-web-app-title" content={APP_CONFIG.SITE.TITLE_SHORT} />
+			<link rel="manifest" href="/site.webmanifest" />
+		</Fragment>
+
+		<!-- <SEO
+      title={title}
+      titleDefault={APP_CONFIG.SITE.TITLE}
+      titleTemplate={`%s | ${APP_CONFIG.SITE.TITLE_SHORT}`}
+      description={APP_CONFIG.SITE.DESCRIPTION}
+      openGraph={{
+        basic: {
+          title: APP_CONFIG.SITE.TITLE,
+          url: APP_CONFIG.SITE.URL,
+          type: "website",
+          image: og_image.url,
+        },
+        optional: {
+          description: APP_CONFIG.SITE.DESCRIPTION,
+          siteName: APP_CONFIG.SITE.TITLE,
+          locale: APP_CONFIG.I18N.LOCALES.cs,
+        },
+        image: {
+          ...og_image,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        description: APP_CONFIG.SITE.DESCRIPTION,
+        title: APP_CONFIG.SITE.TITLE,
+        image: og_image.url,
+      }}
+    /> -->
+
+		{/*  FONTS  */}
+		<link rel="preload" href="/fonts/roboto-slab-v34-latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/roboto-slab-v34-latin-ext-700.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/roboto-v47-latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/roboto-v47-latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/roboto-v47-latin-ext-500.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/roboto-v47-latin-ext-600.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/roboto-v47-latin-ext-700.woff2" as="font" type="font/woff2" crossorigin />
+
+		{/* STRUCTURED DATA */}
+		<Schema
+			item={{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				name: APP_CONFIG.AUTHOR.NAME,
+				url: APP_CONFIG.SITE.URL,
+				image: og_image.url,
+				sameAs: [APP_CONFIG.SOCIAL.TWITTER, APP_CONFIG.SOCIAL.LINKEDIN, APP_CONFIG.SOCIAL.GITHUB],
+			}}
+		/>
+
+		{/* ANALYTICS */}
+		<script type="text/partytown" defer is:inline data-domain={APP_CONFIG.SITE.DOMAIN} src="/js/script.js"></script>
+
+		{/* I18N */}
+		<I18nClient />
+
+		{/* THEME */}
+		<script is:inline>
+			const theme = (() => {
+				const localStorageTheme = localStorage?.getItem("theme") ?? ""
+				if (["dark", "light"].includes(localStorageTheme)) {
+					return localStorageTheme
+				}
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					return "dark"
+				}
+				return "light"
+			})()
+
+			if (theme === "light") {
+				document.documentElement.classList.remove("dark")
+			} else {
+				document.documentElement.classList.add("dark")
+			}
+
+			window.localStorage.setItem("theme", theme)
+		</script>
+
+		{/* VIEW TRANSITIONS */}
+		{/* <ClientRouter /> */}
+		{/* Use only without ModeToggle */}
+	</Head>
+	<body
+		id="body"
+		class="flex min-h-svh w-full flex-col bg-background font-roboto text-foreground antialiased transition-colors duration-200 ease-in-out"
+	>
+		<!-- <Header /> -->
+		<Main>
+			<slot />
+		</Main>
+		<!-- <Footer /> -->
+	</body>
+</html>

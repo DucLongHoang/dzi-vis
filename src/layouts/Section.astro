@@ -1,0 +1,43 @@
+---
+import { cn } from "@/lib/utils"
+
+type Props = {
+	id?: string
+	aboveTitle?: string
+	title?: string
+	subtext?: string
+	isHero?: boolean
+	bgCn?: string
+}
+
+const { id, aboveTitle, title, subtext, bgCn, isHero = false }: Props = Astro.props
+---
+
+<section id={id} class={cn("grid place-content-stretch py-10 md:py-20 scroll-mt-16", isHero && "py-0 md:py-0", bgCn)}>
+	<slot name="before" />
+
+	<div class={cn("grid place-content-start mx-auto", !isHero && "max-w-7xl")}>
+		<div class={cn("grid gap-y-10", !isHero && "px-5 sm:px-10")}>
+			{
+				title !== undefined && (
+					<div class="grid gap-y-6">
+						<div class="grid gap-y-2">
+							{aboveTitle && <p class="text-center text-base text-primary md:text-lg">{aboveTitle}</p>}
+							{title && (
+								<h2 class="text-balance text-center font-roboto-slab text-2xl font-bold text-foreground md:text-4xl">
+									{title}
+								</h2>
+							)}
+						</div>
+						{subtext && <p class="text-balance text-center text-base md:text-lg">{subtext}</p>}
+					</div>
+				)
+			}
+			<div class="grid place-content-stretch">
+				<slot />
+			</div>
+		</div>
+	</div>
+
+	<slot name="after" />
+</section>

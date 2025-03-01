@@ -1,0 +1,111 @@
+---
+import { Icon } from "astro-icon/components"
+import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
+import APP_CONFIG from "@/config/config"
+import NavMenu from "@/components/NavMenu"
+import NavDrawer from "@/components/NavDrawer"
+import type { LinkItem } from "@/lib/types"
+import { LINKS } from "@/config/links"
+import ModeToggle from "@/components/ModeToggle.astro"
+import { getLocalePath, getSwitcherData, t } from "i18n:astro"
+import LocaleSelect from "@/components/LocaleSelect"
+
+const pathname = Astro.url.pathname
+const homeHref = pathname === getLocalePath(LINKS.home) ? "#" : getLocalePath(LINKS.home)
+const localeHomeHref = getLocalePath(LINKS.home)
+
+const linkItems: LinkItem[] = [
+	{ href: homeHref, title: t("nav.home") },
+	{ href: getLocalePath(LINKS.about), title: t("nav.about") },
+	{
+		href: getLocalePath(LINKS.services),
+		title: t("nav.services"),
+		children: [
+			{
+				href: getLocalePath(LINKS.services),
+				title: t("services.items.0.title"),
+				description: t("services.items.0.description"),
+			},
+			{
+				href: getLocalePath(LINKS.services),
+				title: t("services.items.1.title"),
+				description: t("services.items.1.description"),
+			},
+			{
+				href: getLocalePath(LINKS.services),
+				title: t("services.items.2.title"),
+				description: t("services.items.2.description"),
+			},
+			{
+				href: getLocalePath(LINKS.services),
+				title: t("services.items.3.title"),
+				description: t("services.items.3.description"),
+			},
+			{
+				href: getLocalePath(LINKS.services),
+				title: t("services.items.4.title"),
+				description: t("services.items.4.description"),
+			},
+			{
+				href: getLocalePath(LINKS.services),
+				title: t("services.items.5.title"),
+				description: t("services.items.5.description"),
+			},
+		],
+	},
+	{ href: getLocalePath(LINKS.gallery), title: t("nav.gallery") },
+	{ href: getLocalePath(LINKS.referrals), title: t("nav.referrals") },
+	{ href: getLocalePath(LINKS.blog), title: t("nav.blog") },
+	{ href: getLocalePath(LINKS.contact), title: t("nav.contact") },
+	{ href: getLocalePath(LINKS.contact), title: t("nav.cta"), isCta: true },
+]
+---
+
+<div
+	class="hidden flex-row items-center justify-end divide-x-2 divide-primary-foreground/25 bg-primary px-4 py-4 text-primary-foreground lg:flex"
+>
+	<div class="flex flex-row items-center gap-x-2 px-4">
+		<PhoneIcon aria-hidden className="size-4" />
+		<a href={`tel:${APP_CONFIG.CLIENT.PHONE}`}>{APP_CONFIG.CLIENT.PHONE_FORMATTED}</a>
+	</div>
+	<div class="flex flex-row items-center gap-x-2 px-4">
+		<MailIcon aria-hidden className="size-4" />
+		<a href={`mailto:${APP_CONFIG.CLIENT.EMAIL}`}>{APP_CONFIG.CLIENT.EMAIL}</a>
+	</div>
+	<div class="non-italic flex flex-row items-center gap-x-2 px-4">
+		<MapPinIcon aria-hidden className="size-4" />
+		<a href={APP_CONFIG.CLIENT.GOOGLE_MAPS} target="_blank"><address>{APP_CONFIG.CLIENT.ADDRESS}</address></a>
+	</div>
+</div>
+
+<header
+	class="sticky top-0 z-10 flex w-full flex-row items-center justify-between bg-accent px-8 py-3 text-accent-foreground shadow-md"
+>
+	<div id="logo-header" aria-label={t("nav.home")} class="flex flex-row items-center gap-x-2 hover:cursor-pointer">
+		<Icon name="logo" class="size-10 lg:size-12" />
+		<span class="text-2xl font-bold lg:text-3xl">{APP_CONFIG.CLIENT.NAME}</span>
+	</div>
+
+	<div class="hidden flex-row items-center gap-x-4 lg:flex">
+		<NavMenu linkItems={linkItems} client:load />
+		<ModeToggle />
+		<LocaleSelect locales={getSwitcherData()} client:load />
+	</div>
+
+	<div class="flex flex-row items-center gap-x-4 lg:hidden">
+		<ModeToggle isPhone />
+		<NavDrawer linkItems={linkItems} client:load />
+	</div>
+
+	<script is:inline define:vars={{ localeHomeHref }}>
+		function handleClick() {
+			if (window.location.pathname === localeHomeHref) {
+				const element = document.getElementById("body")
+				element?.scrollIntoView({ behavior: "smooth", block: "start" })
+			} else {
+				window.location.href = localeHomeHref
+			}
+		}
+		document.getElementById("logo-header")?.addEventListener("click", handleClick)
+	</script>
+</header>

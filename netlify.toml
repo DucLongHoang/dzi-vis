@@ -1,0 +1,36 @@
+[build]
+  ignore = "exit 0" # disable build on commit push
+  base = "/"
+  publish = "dist"
+  command = "pnpm run build"
+  environment = { NODE_VERSION = "20.11.0" }
+
+[[redirects]]
+  from = "/js/script.js"
+  to = "https://analytics.duclonghoang.com/js/script.hash.js" 
+  status = 200
+
+[[redirects]]
+  from = "/api/event"
+  to = "https://analytics.duclonghoang.com/api/event" 
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://analytics.duclonghoang.com/ https://unpkg.com;
+      style-src 'self' 'unsafe-inline' https://astro.duclonghoang.com https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      connect-src 'self' blob: data: https://unpkg.com https://gitlab.com https://status-api.hostedstatus.com;
+      img-src 'self' blob: data: https://gitlab.com https://secure.gravatar.com;
+      media-src blob:;
+      frame-src 'self' blob:;
+      object-src 'none';
+    '''
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Permissions-Policy = "geolocation=(self)"

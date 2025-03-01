@@ -1,0 +1,126 @@
+---
+import { Separator } from "@/components/ui/separator"
+import { LINKS } from "@/config/links"
+import { CopyrightIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
+import APP_CONFIG from "@/config/config"
+import { Icon } from "astro-icon/components"
+import type { LinkItem } from "@/lib/types"
+import { getLocalePath, t } from "i18n:astro"
+
+const year = new Date().getFullYear()
+
+const pathname = Astro.url.pathname
+const homeHref = pathname === getLocalePath(LINKS.home) ? "#" : getLocalePath(LINKS.home)
+const localeHomeHref = getLocalePath(LINKS.home)
+
+const links: LinkItem[] = [
+	{ title: t("nav.home"), href: homeHref },
+	{ title: t("nav.about"), href: getLocalePath(LINKS.about) },
+	{ title: t("nav.services"), href: getLocalePath(LINKS.services) },
+	{ title: t("nav.gallery"), href: getLocalePath(LINKS.gallery) },
+	{ title: t("nav.referrals"), href: getLocalePath(LINKS.referrals) },
+	{ title: t("nav.blog"), href: getLocalePath(LINKS.blog) },
+	{ title: t("nav.contact"), href: getLocalePath(LINKS.contact) },
+]
+
+const services: LinkItem[] = [
+	{ title: t("services.items.0.title"), href: getLocalePath(LINKS.services) },
+	{ title: t("services.items.1.title"), href: getLocalePath(LINKS.services) },
+	{ title: t("services.items.2.title"), href: getLocalePath(LINKS.services) },
+	{ title: t("services.items.3.title"), href: getLocalePath(LINKS.services) },
+	{ title: t("services.items.4.title"), href: getLocalePath(LINKS.services) },
+	{ title: t("services.items.5.title"), href: getLocalePath(LINKS.services) },
+]
+---
+
+<footer
+	class="grid place-content-stretch gap-y-8 bg-primary px-6 py-8 text-primary-foreground sm:px-10 sm:py-12 lg:place-content-center"
+>
+	<div class="grid w-full max-w-6xl place-content-stretch gap-y-8 lg:grid-cols-2">
+		<div class="col-span-1 grid place-content-start">
+			<div id="logo-footer" aria-label={t("nav.home")} class="flex flex-row items-center gap-x-2 hover:cursor-pointer">
+				<Icon name="logo" aria-label="domů" class="size-10 lg:size-14" />
+				<span class="text-2xl font-bold lg:text-4xl">{APP_CONFIG.CLIENT.NAME}</span>
+			</div>
+		</div>
+
+		<div class="col-span-1 grid place-content-stretch gap-y-8 sm:grid-cols-2 md:grid-cols-3">
+			<div class="flex flex-col gap-y-4">
+				<span class="text-xl font-bold">{t("footer_links")}</span>
+				<ul class="flex flex-col gap-y-2">
+					{
+						links.map((item) => (
+							<li>
+								<a href={item.href} class="hover:underline">
+									{item.title}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="flex flex-col gap-y-4">
+				<span class="text-xl font-bold">{t("footer_services")}</span>
+				<ul class="flex flex-col gap-y-2">
+					{
+						services.map((item) => (
+							<li>
+								<a href={item.href} class="hover:underline">
+									{item.title}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="flex flex-col gap-y-4">
+				<span class="text-xl font-bold">{t("footer_contacts")}</span>
+				<ul class="flex flex-col gap-y-4">
+					<li class="flex flex-row place-content-start gap-x-2">
+						<PhoneIcon aria-hidden className="size-6" />
+						<a href={`tel:${APP_CONFIG.CLIENT.PHONE}`} class="hover:underline">{APP_CONFIG.CLIENT.PHONE_FORMATTED}</a>
+					</li>
+					<li class="flex flex-row place-content-start gap-x-2">
+						<MailIcon aria-hidden className="size-6" />
+						<a href={`mailto:${APP_CONFIG.CLIENT.EMAIL}`} class="hover:underline">{APP_CONFIG.CLIENT.EMAIL}</a>
+					</li>
+					<li class="flex flex-row place-content-start gap-x-2">
+						<MapPinIcon aria-hidden className="size-6" />
+						<address>
+							<a href={APP_CONFIG.CLIENT.GOOGLE_MAPS} class="non-italic hover:underline">{APP_CONFIG.CLIENT.ADDRESS}</a>
+						</address>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<Separator orientation="horizontal" />
+
+	<div class="flex flex-col justify-between gap-y-2 md:flex-row">
+		<span class="flex flex-row items-center gap-x-1">
+			<CopyrightIcon aria-hidden className="size-4" />
+			2024–{year}
+			{t("footer_all_rights")}
+		</span>
+
+		<span>
+			{t("footer_made_by")}
+			<a href={APP_CONFIG.AUTHOR.SITE} target="_blank" class="hover:underline">{APP_CONFIG.AUTHOR.NAME}</a>
+		</span>
+	</div>
+</footer>
+
+<script is:inline define:vars={{ localeHomeHref }}>
+	function handleClick() {
+		if (window.location.pathname === localeHomeHref) {
+			const element = document.getElementById("body")
+			element?.scrollIntoView({ behavior: "smooth", block: "start" })
+		} else {
+			window.location.href = localeHomeHref
+		}
+	}
+	document.getElementById("logo-footer")?.addEventListener("click", handleClick)
+</script>

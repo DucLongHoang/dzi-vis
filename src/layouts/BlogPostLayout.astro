@@ -1,0 +1,10 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+const { title } = Astro.props
+---
+
+<BaseLayout title={title}>
+	<article class="mx-auto grid w-full place-content-stretch">
+		<slot />
+	</article>
+</BaseLayout>
