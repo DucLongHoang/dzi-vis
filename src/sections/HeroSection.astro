@@ -1,49 +1,43 @@
 ---
-import Image from "@samvera/clover-iiif/image"
-import type OpenSeadragon from "openseadragon"
+
 ---
 
-<div>
-	<Image
-		src="/images/logmap.dzi"
-		isTiledImage
-		openSeadragonConfig={{
-			id: "img",
-			tileSources: "/images/logmap.dzi",
-			showRotationControl: false,
-			showNavigator: true,
-			useCanvas: true,
-			navigatorPosition: "BOTTOM_LEFT",
-			gestureSettingsMouse: {
-				clickToZoom: false,
-				dblClickToZoom: false,
-			},
-		} as OpenSeadragon.Options}
-		openSeadragonCallback={(viewer: OpenSeadragon.Viewer) => {
-			viewer.addHandler("canvas-click", function (event) {
-				// The canvas-click event gives us a position in web coordinates.
-				var webPoint = event.position
-
-				// Convert that to viewport coordinates, the lingua franca of OpenSeadragon coordinates.
-				var viewportPoint = viewer.viewport.pointFromPixel(webPoint)
-
-				// Convert from viewport coordinates to image coordinates.
-				var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
-
-				console.log("canvas-click", webPoint, viewportPoint, imagePoint)
-			})
-		}}
-		client:only="react"
-	/>
-</div>
-
-<!--
 <div id="openseadragon1" class="size-full"></div>
 <script>
 	import OpenSeadragon from "openseadragon"
 
-	var viewer = OpenSeadragon({
+	const viewer = OpenSeadragon({
 		id: "openseadragon1",
+		prefixUrl: "//openseadragon.github.io/openseadragon/images/",
 		tileSources: "/images/logmap.dzi",
+		showNavigator: true,
+		navigatorPosition: "TOP_LEFT",
+		navigationControlAnchor: OpenSeadragon.ControlAnchor.TOP_RIGHT,
+
+		// debugMode: true,
 	})
-</script> -->
+
+	viewer.addHandler("update-viewport", function () {
+		var canvas = viewer.drawer.canvas as HTMLCanvasElement
+		var ctx = viewer.drawer.context
+
+		if (!ctx) {
+			return
+		}
+
+		ctx.strokeStyle = "#fff"
+		ctx.lineWidth = 1
+		ctx.strokeRect(0, 0, canvas.width, canvas.height)
+		ctx.strokeText("Hello, world!", 10, 10)
+	})
+
+	viewer.addHandler("canvas-click", (event) => {
+		// The canvas-click event gives us a position in web coordinates.
+		var webPoint = event.position
+		// Convert that to viewport coordinates, the lingua franca of OpenSeadragon coordinates.
+		var viewportPoint = viewer.viewport.pointFromPixel(webPoint)
+		// Convert from viewport coordinates to image coordinates.
+		var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
+		console.log("canvas-click", webPoint, viewportPoint, imagePoint)
+	})
+</script>
