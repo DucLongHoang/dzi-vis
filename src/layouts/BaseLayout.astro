@@ -97,7 +97,7 @@ const { title, isHomePage }: Props = Astro.props
 		<I18nClient />
 
 		{/* THEME */}
-		<script is:inline>
+		<!-- <script is:inline>
 			const theme = (() => {
 				const localStorageTheme = localStorage?.getItem("theme") ?? ""
 				if (["dark", "light"].includes(localStorageTheme)) {
@@ -116,7 +116,7 @@ const { title, isHomePage }: Props = Astro.props
 			}
 
 			window.localStorage.setItem("theme", theme)
-		</script>
+		</script> -->
 
 		{/* VIEW TRANSITIONS */}
 		{/* <ClientRouter /> */}
