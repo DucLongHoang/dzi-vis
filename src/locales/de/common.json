@@ -1,107 +1,107 @@
 {
-  "name": "Firma GmbH",
-  "title": "Die beste Astro Seite",
-  "description": "",
-  "city": "Prag",
-  "nav": {
-    "home": "Home",
-    "about": "Über",
-    "portfolio": "Portfolio",
-    "contact": "Kontakt",
-    "referrals": "Empfehlungen",
-    "services": "Diensleistungen",
-    "gallery": "Galerie",
-    "blog": "Blog",
-    "cta": "Beratung buchen"
-  },
-  "hero": {
-    "title": "",
-    "subtitle": "",
-    "cta": ""
-  },
-  "services": {
-    "title": "Diensleistungen",
-    "subtitle": "",
-    "items": [
-      {
-        "title": "Diensleistung 1",
-        "description": "Beschreibung der Diensleistung 1"
-      },
-      {
-        "title": "Diensleistung 2",
-        "description": "Beschreibung der Diensleistung 2"
-      },
-      {
-        "title": "Diensleistung 3",
-        "description": "Beschreibung der Diensleistung 3"
-      },
-      {
-        "title": "Diensleistung 4",
-        "description": "Beschreibung der Diensleistung 4"
-      },
-      {
-        "title": "Diensleistung 5",
-        "description": "Beschreibung der Diensleistung 5"
-      },
-      {
-        "title": "Diensleistung 6",
-        "description": "Beschreibung der Diensleistung 6"
-      }
-    ]
-  },
-  "about_title": "Über uns",
-  "about_subtitle": "",
-  "about_badge": "",
-  "about_cv": "",
-  "about_education": "",
-  "about_master_degree": "",
-  "about_bachelor_degree": "",
-  "about_university": "",
-  "about_present": "",
-  "about_work": "",
-  "pricing_title": "",
-  "pricing_subtitle": "",
-  "pricing_select": "",
-  "contact_title": "Kontakt",
-  "contact_subtitle": "",
-  "contact_email": "",
-  "contact_phone": "",
-  "form": {
-    "name": {
-      "label": "Name",
-      "placeholder": "John Doe"
-    },
-    "email": {
-      "label": "E-Mail",
-      "placeholder": "john.doe@beispiel.de"
-    },
-    "phone": {
-      "label": "Telefon",
-      "placeholder": "+420789456123"
-    },
-    "message": {
-      "label": "Nachricht",
-      "placeholder": "Hallo..."
-    },
-    "submit": "Senden"
-  },
-  "footer_links": "Links",
-  "footer_services": "Diensleistungen",
-  "footer_projects": "Projekte",
-  "footer_socials": "Socials",
-  "footer_all_rights": "Alle Rechte vorbehalten",
-  "footer_made_by": "Handkodiert von: ",
-  "footer_contacts": "Kontakte",
-  "_404_title": "404",
-  "_404_subtext": "Seite nicht gefunden",
-  "_404_back": "Bitte zurück zur Startseite",
-  "_404_here": "hier",
-  "thank_you_title": "Danke!",
-  "thank_you_subtext": "Ihre Nachricht wurde erfolgreich gesendet",
-  "thank_you_back": "Bitte zurück zur Startseite",
-  "thank_you_here": "hier",
-  "blogpost": {
-    "read_more": "Artikel lesen",
-    "title": "Artikel"
-  }
+	"name": "Firma GmbH",
+	"title": "Die beste Astro Seite",
+	"description": "",
+	"city": "Prag",
+	"nav": {
+		"home": "Home",
+		"about": "Über",
+		"portfolio": "Portfolio",
+		"contact": "Kontakt",
+		"referrals": "Empfehlungen",
+		"services": "Diensleistungen",
+		"gallery": "Galerie",
+		"blog": "Blog",
+		"cta": "Beratung buchen"
+	},
+	"hero": {
+		"title": "",
+		"subtitle": "",
+		"cta": ""
+	},
+	"services": {
+		"title": "Diensleistungen",
+		"subtitle": "",
+		"items": [
+			{
+				"title": "Diensleistung 1",
+				"description": "Beschreibung der Diensleistung 1"
+			},
+			{
+				"title": "Diensleistung 2",
+				"description": "Beschreibung der Diensleistung 2"
+			},
+			{
+				"title": "Diensleistung 3",
+				"description": "Beschreibung der Diensleistung 3"
+			},
+			{
+				"title": "Diensleistung 4",
+				"description": "Beschreibung der Diensleistung 4"
+			},
+			{
+				"title": "Diensleistung 5",
+				"description": "Beschreibung der Diensleistung 5"
+			},
+			{
+				"title": "Diensleistung 6",
+				"description": "Beschreibung der Diensleistung 6"
+			}
+		]
+	},
+	"about_title": "Über uns",
+	"about_subtitle": "",
+	"about_badge": "",
+	"about_cv": "",
+	"about_education": "",
+	"about_master_degree": "",
+	"about_bachelor_degree": "",
+	"about_university": "",
+	"about_present": "",
+	"about_work": "",
+	"pricing_title": "",
+	"pricing_subtitle": "",
+	"pricing_select": "",
+	"contact_title": "Kontakt",
+	"contact_subtitle": "",
+	"contact_email": "",
+	"contact_phone": "",
+	"form": {
+		"name": {
+			"label": "Name",
+			"placeholder": "John Doe"
+		},
+		"email": {
+			"label": "E-Mail",
+			"placeholder": "john.doe@beispiel.de"
+		},
+		"phone": {
+			"label": "Telefon",
+			"placeholder": "+420789456123"
+		},
+		"message": {
+			"label": "Nachricht",
+			"placeholder": "Hallo..."
+		},
+		"submit": "Senden"
+	},
+	"footer_links": "Links",
+	"footer_services": "Diensleistungen",
+	"footer_projects": "Projekte",
+	"footer_socials": "Socials",
+	"footer_all_rights": "Alle Rechte vorbehalten",
+	"footer_made_by": "Handkodiert von: ",
+	"footer_contacts": "Kontakte",
+	"_404_title": "404",
+	"_404_subtext": "Seite nicht gefunden",
+	"_404_back": "Bitte zurück zur Startseite",
+	"_404_here": "hier",
+	"thank_you_title": "Danke!",
+	"thank_you_subtext": "Ihre Nachricht wurde erfolgreich gesendet",
+	"thank_you_back": "Bitte zurück zur Startseite",
+	"thank_you_here": "hier",
+	"blogpost": {
+		"read_more": "Artikel lesen",
+		"title": "Artikel"
+	}
 }

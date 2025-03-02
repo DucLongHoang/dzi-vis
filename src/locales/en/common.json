@@ -1,107 +1,107 @@
 {
-  "name": "Company Ltd.",
-  "title": "The best Astro site",
-  "description": "",
-  "city": "Prague",
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "portfolio": "Portfolio",
-    "contact": "Contact",
-    "referrals": "Referrals",
-    "services": "Services",
-    "gallery": "Gallery",
-    "blog": "Blog",
-    "cta": "Book a free consultation"
-  },
-  "hero": {
-    "title": "",
-    "subtitle": "",
-    "cta": ""
-  },
-  "services": {
-    "title": "Services",
-    "subtitle": "",
-    "items": [
-      {
-        "title": "Service 1",
-        "description": "Description of service 1"
-      },
-      {
-        "title": "Service 2",
-        "description": "Description of service 2"
-      },
-      {
-        "title": "Service 3",
-        "description": "Description of service 3"
-      },
-      {
-        "title": "Service 4",
-        "description": "Description of service 4"
-      },
-      {
-        "title": "Service 5",
-        "description": "Description of service 5"
-      },
-      {
-        "title": "Service 6",
-        "description": "Description of service 6"
-      }
-    ]
-  },
-  "about_title": "About us",
-  "about_subtitle": "",
-  "about_badge": "",
-  "about_cv": "",
-  "about_education": "",
-  "about_master_degree": "",
-  "about_bachelor_degree": "",
-  "about_university": "",
-  "about_present": "",
-  "about_work": "",
-  "pricing_title": "",
-  "pricing_subtitle": "",
-  "pricing_select": "",
-  "contact_title": "Contact",
-  "contact_subtitle": "",
-  "contact_email": "",
-  "contact_phone": "",
-  "form": {
-    "name": {
-      "label": "Name",
-      "placeholder": "John Doe"
-    },
-    "email": {
-      "label": "Email",
-      "placeholder": "john.doe@example.com"
-    },
-    "phone": {
-      "label": "Phone",
-      "placeholder": "+420789456123"
-    },
-    "message": {
-      "label": "Message",
-      "placeholder": "Hello..."
-    },
-    "submit": "Submit"
-  },
-  "footer_links": "Links",
-  "footer_services": "Services",
-  "footer_projects": "Projects",
-  "footer_socials": "Socials",
-  "footer_all_rights": "All rights reserved",
-  "footer_made_by": "Hand coded by: ",
-  "footer_contacts": "Contacts",
-  "_404_title": "404",
-  "_404_subtext": "Page not found",
-  "_404_back": "Please return to the home page",
-  "_404_here": "here",
-  "thank_you_title": "Thank you!",
-  "thank_you_subtext": "I received your message successfully.",
-  "thank_you_back": "Please return to the home page",
-  "thank_you_here": "here",
-  "blogpost": {
-    "read_more": "Read article",
-    "title": "Article"
-  }
+	"name": "Company Ltd.",
+	"title": "The best Astro site",
+	"description": "",
+	"city": "Prague",
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"portfolio": "Portfolio",
+		"contact": "Contact",
+		"referrals": "Referrals",
+		"services": "Services",
+		"gallery": "Gallery",
+		"blog": "Blog",
+		"cta": "Book a free consultation"
+	},
+	"hero": {
+		"title": "",
+		"subtitle": "",
+		"cta": ""
+	},
+	"services": {
+		"title": "Services",
+		"subtitle": "",
+		"items": [
+			{
+				"title": "Service 1",
+				"description": "Description of service 1"
+			},
+			{
+				"title": "Service 2",
+				"description": "Description of service 2"
+			},
+			{
+				"title": "Service 3",
+				"description": "Description of service 3"
+			},
+			{
+				"title": "Service 4",
+				"description": "Description of service 4"
+			},
+			{
+				"title": "Service 5",
+				"description": "Description of service 5"
+			},
+			{
+				"title": "Service 6",
+				"description": "Description of service 6"
+			}
+		]
+	},
+	"about_title": "About us",
+	"about_subtitle": "",
+	"about_badge": "",
+	"about_cv": "",
+	"about_education": "",
+	"about_master_degree": "",
+	"about_bachelor_degree": "",
+	"about_university": "",
+	"about_present": "",
+	"about_work": "",
+	"pricing_title": "",
+	"pricing_subtitle": "",
+	"pricing_select": "",
+	"contact_title": "Contact",
+	"contact_subtitle": "",
+	"contact_email": "",
+	"contact_phone": "",
+	"form": {
+		"name": {
+			"label": "Name",
+			"placeholder": "John Doe"
+		},
+		"email": {
+			"label": "Email",
+			"placeholder": "john.doe@example.com"
+		},
+		"phone": {
+			"label": "Phone",
+			"placeholder": "+420789456123"
+		},
+		"message": {
+			"label": "Message",
+			"placeholder": "Hello..."
+		},
+		"submit": "Submit"
+	},
+	"footer_links": "Links",
+	"footer_services": "Services",
+	"footer_projects": "Projects",
+	"footer_socials": "Socials",
+	"footer_all_rights": "All rights reserved",
+	"footer_made_by": "Hand coded by: ",
+	"footer_contacts": "Contacts",
+	"_404_title": "404",
+	"_404_subtext": "Page not found",
+	"_404_back": "Please return to the home page",
+	"_404_here": "here",
+	"thank_you_title": "Thank you!",
+	"thank_you_subtext": "I received your message successfully.",
+	"thank_you_back": "Please return to the home page",
+	"thank_you_here": "here",
+	"blogpost": {
+		"read_more": "Read article",
+		"title": "Article"
+	}
 }
