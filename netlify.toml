@@ -1,5 +1,5 @@
 [build]
-  ignore = "exit 0" # disable build on commit push
+  # ignore = "exit 0" # disable build on commit push
   base = "/"
   publish = "dist"
   command = "pnpm run build"
@@ -7,12 +7,12 @@
 
 [[redirects]]
   from = "/js/script.js"
-  to = "https://analytics.duclonghoang.com/js/script.hash.js" 
+  to = "https://analytics.duclonghoang.com/js/script.hash.js"
   status = 200
 
 [[redirects]]
   from = "/api/event"
-  to = "https://analytics.duclonghoang.com/api/event" 
+  to = "https://analytics.duclonghoang.com/api/event"
   status = 200
 
 [[headers]]
