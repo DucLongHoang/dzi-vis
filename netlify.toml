@@ -21,11 +21,11 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = '''
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://analytics.duclonghoang.com/ https://unpkg.com;
+      script-src 'self' 'unsafe-inline' https://analytics.duclonghoang.com/;
       style-src 'self' 'unsafe-inline' https://astro.duclonghoang.com https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com;
-      connect-src 'self' blob: data: https://unpkg.com https://gitlab.com https://status-api.hostedstatus.com;
-      img-src 'self' blob: data: https://gitlab.com https://secure.gravatar.com;
+      connect-src 'self';
+      img-src 'self' https://openseadragon.github.io https://dzi-bucket.duclonghoang.com;
       media-src blob:;
       frame-src 'self' blob:;
       object-src 'none';
