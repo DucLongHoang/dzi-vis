@@ -2,42 +2,55 @@
 
 ---
 
-<div id="openseadragon1" class="size-full"></div>
+<div class="position-info h-fit text-center">Image coordinates</div>
+<div id="openseadragon1" class="grid size-full w-full grow"></div>
 <script>
-	import OpenSeadragon from "openseadragon"
+	import OpenSeadragon, { type PointerMouseTrackerEvent } from "openseadragon"
+
+	const bucketUrl = "https://dzi-bucket.duclonghoang.com"
+	const imageFolder = "logmap_files"
 
 	const viewer = OpenSeadragon({
 		id: "openseadragon1",
 		prefixUrl: "//openseadragon.github.io/openseadragon/images/",
-		tileSources: "/images/logmap.dzi",
+		tileSources: {
+			height: 20000,
+			width: 60000,
+			tileSize: 254,
+			tileOverlap: 1,
+			getTileUrl: (level, x, y) => {
+				const url = `${bucketUrl}/${imageFolder}/${level}/${x}_${y}.jpeg`
+				// console.log(url)
+				return url
+			},
+		},
 		showNavigator: true,
 		navigatorPosition: "TOP_LEFT",
 		navigationControlAnchor: OpenSeadragon.ControlAnchor.TOP_RIGHT,
-
 		// debugMode: true,
 	})
 
-	viewer.addHandler("update-viewport", function () {
-		var canvas = viewer.drawer.canvas as HTMLCanvasElement
-		var ctx = viewer.drawer.context
+	var positionEl = document.querySelector<HTMLDivElement>(".position-info")
 
-		if (!ctx) {
-			return
-		}
+	viewer.addHandler("open", function () {
+		const tracker = new OpenSeadragon.MouseTracker({
+			element: viewer.element,
+			moveHandler: (event) => {
+				const webPoint = (event as PointerMouseTrackerEvent).position
+				const viewportPoint = viewer.viewport.pointFromPixel(webPoint)
+				const imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
 
-		ctx.strokeStyle = "#fff"
-		ctx.lineWidth = 1
-		ctx.strokeRect(0, 0, canvas.width, canvas.height)
-		ctx.strokeText("Hello, world!", 10, 10)
-	})
+				function mapRange(value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) {
+					return (newMin + ((value - oldMin) / (oldMax - oldMin)) * (newMax - newMin)).toPrecision(10)
+				}
 
-	viewer.addHandler("canvas-click", (event) => {
-		// The canvas-click event gives us a position in web coordinates.
-		var webPoint = event.position
-		// Convert that to viewport coordinates, the lingua franca of OpenSeadragon coordinates.
-		var viewportPoint = viewer.viewport.pointFromPixel(webPoint)
-		// Convert from viewport coordinates to image coordinates.
-		var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
-		console.log("canvas-click", webPoint, viewportPoint, imagePoint)
+				const x = mapRange(imagePoint.x, 0, 60000, 3.5, 4.0)
+				const y = mapRange(imagePoint.y, 0, 20000, 1, 0)
+
+				positionEl!.innerHTML = "Image coordinates: (" + x + ", " + y + ")"
+			},
+		})
+
+		tracker.setTracking(true)
 	})
 </script>

@@ -1,8 +1,8 @@
 ---
-import Footer from "@/layouts/Footer.astro"
-import Header from "@/layouts/Header.astro"
+// import Footer from "@/layouts/Footer.astro"
+// import Header from "@/layouts/Header.astro"
 import "@/styles/globals.css"
-import Main from "./Main.astro"
+// import Main from "./Main.astro"
 import APP_CONFIG from "@/config/config"
 import type { OgImage } from "@/lib/types"
 import { Schema } from "astro-seo-schema"
@@ -127,9 +127,9 @@ const { title, isHomePage }: Props = Astro.props
 		class="flex min-h-svh w-full flex-col bg-background font-roboto text-foreground antialiased transition-colors duration-200 ease-in-out"
 	>
 		<!-- <Header /> -->
-		<Main>
-			<slot />
-		</Main>
+		<!-- <Main> -->
+		<slot />
+		<!-- </Main> -->
 		<!-- <Footer /> -->
 	</body>
 </html>
