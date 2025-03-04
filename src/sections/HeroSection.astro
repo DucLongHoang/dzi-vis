@@ -2,7 +2,12 @@
 
 ---
 
-<div class="position-info h-fit text-center">Image coordinates</div>
+<div class="flex h-fit flex-row justify-between px-4">
+	<span class="position-info">
+		{`Image coordinates: ${(0.0).toPrecision(15)}, ${(0).toPrecision(15)}`}
+	</span>
+	<span class="copy-info"></span>
+</div>
 <div id="openseadragon1" class="grid size-full w-full grow"></div>
 <script>
 	import OpenSeadragon, { type PointerMouseTrackerEvent } from "openseadragon"
@@ -20,37 +25,51 @@
 			tileOverlap: 1,
 			getTileUrl: (level, x, y) => {
 				const url = `${bucketUrl}/${imageFolder}/${level}/${x}_${y}.jpeg`
-				// console.log(url)
 				return url
 			},
 		},
 		showNavigator: true,
 		navigatorPosition: "TOP_LEFT",
 		navigationControlAnchor: OpenSeadragon.ControlAnchor.TOP_RIGHT,
+		gestureSettingsMouse: {
+			clickToZoom: false,
+			dblClickToZoom: true,
+		},
 		// debugMode: true,
 	})
 
-	var positionEl = document.querySelector<HTMLDivElement>(".position-info")
+	const positionEl = document.querySelector<HTMLSpanElement>(".position-info")
+	const copyEl = document.querySelector<HTMLSpanElement>(".copy-info")
+
+	function getCoordinates(webPoint: OpenSeadragon.Point) {
+		const viewportPoint = viewer.viewport.pointFromPixel(webPoint)
+		const imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
+
+		function mapRange(value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) {
+			return (newMin + ((value - oldMin) / (oldMax - oldMin)) * (newMax - newMin)).toPrecision(15)
+		}
+
+		const x = mapRange(imagePoint.x, 0, 60000, 3.5, 4.0)
+		const y = mapRange(imagePoint.y, 0, 20000, 1, 0)
+
+		return { x, y }
+	}
 
 	viewer.addHandler("open", function () {
 		const tracker = new OpenSeadragon.MouseTracker({
 			element: viewer.element,
 			moveHandler: (event) => {
-				const webPoint = (event as PointerMouseTrackerEvent).position
-				const viewportPoint = viewer.viewport.pointFromPixel(webPoint)
-				const imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
-
-				function mapRange(value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) {
-					return (newMin + ((value - oldMin) / (oldMax - oldMin)) * (newMax - newMin)).toPrecision(10)
-				}
-
-				const x = mapRange(imagePoint.x, 0, 60000, 3.5, 4.0)
-				const y = mapRange(imagePoint.y, 0, 20000, 1, 0)
-
-				positionEl!.innerHTML = "Image coordinates: (" + x + ", " + y + ")"
+				const { x, y } = getCoordinates((event as PointerMouseTrackerEvent).position)
+				positionEl!.innerHTML = "Image coordinates: " + x + ", " + y
+				copyEl!.innerHTML = ""
 			},
 		})
-
 		tracker.setTracking(true)
+	})
+
+	viewer.addHandler("canvas-click", (event) => {
+		const { x, y } = getCoordinates(event.position)
+		copyEl!.innerHTML = `x:${x}, y:${y} - copied to clipboard`
+		navigator.clipboard.writeText(`x:${x}, y:${y}`)
 	})
 </script>

@@ -91,7 +91,7 @@ const { title, isHomePage }: Props = Astro.props
 		/>
 
 		{/* ANALYTICS */}
-		<script type="text/partytown" defer is:inline data-domain={APP_CONFIG.SITE.DOMAIN} src="/js/script.js"></script>
+		<!-- <script type="text/partytown" defer is:inline data-domain={APP_CONFIG.SITE.DOMAIN} src="/js/script.js"></script> -->
 
 		{/* I18N */}
 		<I18nClient />
@@ -122,10 +122,7 @@ const { title, isHomePage }: Props = Astro.props
 		{/* <ClientRouter /> */}
 		{/* Use only without ModeToggle */}
 	</Head>
-	<body
-		id="body"
-		class="flex min-h-svh w-full flex-col bg-background font-roboto text-foreground antialiased transition-colors duration-200 ease-in-out"
-	>
+	<body id="body" class="flex min-h-svh w-full flex-col bg-background font-mono text-foreground antialiased">
 		<!-- <Header /> -->
 		<!-- <Main> -->
 		<slot />

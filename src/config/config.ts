@@ -1,7 +1,7 @@
 const APP_CONFIG = {
 	SITE: {
-		URL: "https://astro.duclonghoang.com",
-		DOMAIN: "astro.duclonghoang.com",
+		URL: "https://dzi-vis.duclonghoang.com",
+		DOMAIN: "dzi-vis.duclonghoang.com",
 		TITLE: "Short description | Name | City",
 		TITLE_SHORT: "Name",
 		DESCRIPTION: "Keyword stuffed description for SEO - 155 to 160 characters",
