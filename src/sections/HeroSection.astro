@@ -60,7 +60,7 @@
 			element: viewer.element,
 			moveHandler: (event) => {
 				const { x, y } = getCoordinates((event as PointerMouseTrackerEvent).position)
-				positionEl!.innerHTML = "Image coordinates: " + x + ", " + y
+				positionEl!.innerHTML = `x:${x}, y:${y}`
 				copyEl!.innerHTML = ""
 			},
 		})
