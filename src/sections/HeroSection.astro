@@ -6,7 +6,7 @@
 	<span class="position-info">
 		{`x:${(0.0).toPrecision(15)}, y:${(0).toPrecision(15)}`}
 	</span>
-	<span class="copy-info hidden sm:block"></span>
+	<span class="hidden sm:block"></span>
 </div>
 
 <div id="openseadragon1" class="grid size-full w-full grow"></div>
@@ -40,7 +40,6 @@
 	})
 
 	const positionEl = document.querySelector<HTMLSpanElement>(".position-info")
-	const copyEl = document.querySelector<HTMLSpanElement>(".copy-info")
 
 	function getCoordinates(webPoint: OpenSeadragon.Point) {
 		const viewportPoint = viewer.viewport.pointFromPixel(webPoint)
@@ -61,8 +60,7 @@
 			element: viewer.element,
 			moveHandler: (event) => {
 				const { x, y } = getCoordinates((event as PointerMouseTrackerEvent).position)
-				positionEl!.innerHTML = `x:${x}, y:${y}`
-				copyEl!.innerHTML = ""
+				positionEl!.textContent = `x:${x}, y:${y}`
 			},
 		})
 		tracker.setTracking(true)
@@ -70,7 +68,7 @@
 
 	viewer.addHandler("canvas-click", (event) => {
 		const { x, y } = getCoordinates(event.position)
-		copyEl!.innerHTML = `x:${x}, y:${y} - copied to clipboard`
+		positionEl!.textContent = `x:${x}, y:${y} -> copied to clipboard`
 		navigator.clipboard.writeText(`x:${x}, y:${y}`)
 	})
 </script>
