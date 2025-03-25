@@ -169,7 +169,7 @@ export default function ConfigDialog() {
 							id="bucket-image-folder"
 							type="text"
 							defaultValue={$bucketConfig.imageFolder}
-							placeholder="test-dzi"
+							placeholder="log_png_files"
 							className="col-span-4"
 						/>
 					</div>
@@ -182,7 +182,7 @@ export default function ConfigDialog() {
 							id="bucket-image-format"
 							type="text"
 							defaultValue={$bucketConfig.imageFormat}
-							placeholder="test-dzi"
+							placeholder="png"
 							className="col-span-4"
 						/>
 					</div>
