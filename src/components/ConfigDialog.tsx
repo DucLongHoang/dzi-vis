@@ -28,7 +28,6 @@ export default function ConfigDialog() {
 			<DialogContent className="sm:max-w-xl">
 				<DialogHeader>
 					<DialogTitle>DZI-VIS config</DialogTitle>
-
 					<DialogDescription>
 						Here you can make changes to the axis values, image dimensions, and much more. Click save when you're done.
 					</DialogDescription>
@@ -119,8 +118,10 @@ export default function ConfigDialog() {
 				</div>
 
 				<div className="grid gap-4 py-4">
-					<DialogTitle>Bucket config</DialogTitle>
-					<DialogDescription>Bucket URL = https://Domain/Tenant:Name</DialogDescription>
+					<DialogHeader>
+						<DialogTitle>Bucket config</DialogTitle>
+						<DialogDescription>Bucket URL = https://Domain/Tenant:Name</DialogDescription>
+					</DialogHeader>
 
 					<div className="grid grid-cols-5 items-center gap-4">
 						<Label htmlFor="bucket-domain" className="text-right">

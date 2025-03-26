@@ -25,7 +25,7 @@
       style-src 'self' 'unsafe-inline' https://astro.duclonghoang.com https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com;
       connect-src 'self';
-      img-src 'self' https://openseadragon.github.io https://dzi-bucket.duclonghoang.com;
+      img-src 'self' https://openseadragon.github.io https://dzi-bucket.duclonghoang.com https://s3.cl2.du.cesnet.cz;
       media-src blob:;
       frame-src 'self' blob:;
       object-src 'none';
