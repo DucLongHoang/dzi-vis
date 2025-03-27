@@ -12,30 +12,41 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useStore } from "@nanostores/react"
 import { bucketConfig } from "@/configStore"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import amazons3 from "@/icons/amazons3.svg"
 
 export default function BucketConfigDialog() {
+	const [open, setOpen] = useState<boolean>(false)
 	const formRef = useRef<HTMLFormElement>(null)
 	const $bucketConfig = useStore(bucketConfig)
 
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
-
-		const form = formRef.current
-		if (!form) return
+		if (!formRef.current) return
 
 		const formData = new FormData(formRef.current)
-		console.log(formData)
+		bucketConfig.set({
+			domain: String(formData.get("bucket-domain")),
+			tenant: String(formData.get("bucket-tenant")),
+			name: String(formData.get("bucket-name")),
+			imageFolder: String(formData.get("bucket-image-folder")),
+			imageFormat: String(formData.get("bucket-image-format")),
+		})
 
-		// await bucketConfig.set(data)
+		setOpen(false)
 	}
 
 	return (
-		<Dialog>
+		<Dialog open={open} onOpenChange={() => setOpen(!open)}>
 			<DialogTrigger asChild>
 				<Button variant="outline" size="icon">
-					<img src={amazons3.src} width={amazons3.width} height={amazons3.height} alt="Settings" />
+					<img
+						src={amazons3.src}
+						width={amazons3.width}
+						height={amazons3.height}
+						alt="Bucket config"
+						className="size-4"
+					/>
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-xl">

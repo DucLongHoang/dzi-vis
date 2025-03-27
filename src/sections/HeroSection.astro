@@ -1,6 +1,6 @@
 ---
 import BucketConfigDialog from "@/components/BucketConfigDialog"
-import DZIConfigDialog from "@/components/DZIConfigDialog"
+import DziConfigDialog from "@/components/DziConfigDialog"
 import { dziVisConfig } from "@/configStore"
 
 const precision = dziVisConfig.get().precision
@@ -11,7 +11,7 @@ const precision = dziVisConfig.get().precision
 		{`x:${(0.0).toFixed(precision)}, y:${(0).toFixed(precision)}`}
 	</span>
 	<div class="flex flex-row items-center justify-center gap-x-2">
-		<DZIConfigDialog client:load />
+		<DziConfigDialog client:load />
 		<BucketConfigDialog client:load />
 	</div>
 </div>

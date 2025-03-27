@@ -13,21 +13,18 @@ import { Label } from "@/components/ui/label"
 import { useStore } from "@nanostores/react"
 import { dziVisConfig } from "@/configStore"
 import { Settings2 } from "lucide-react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
-export default function DZIConfigDialog() {
+export default function DziConfigDialog() {
+	const [open, setOpen] = useState<boolean>(false)
 	const formRef = useRef<HTMLFormElement>(null)
 	const $dziVisConfig = useStore(dziVisConfig)
 
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
-
-		const form = formRef.current
-		if (!form) return
+		if (!formRef.current) return
 
 		const formData = new FormData(formRef.current)
-		console.log(formData)
-
 		dziVisConfig.set({
 			height: Number(formData.get("height")),
 			width: Number(formData.get("width")),
@@ -39,10 +36,12 @@ export default function DZIConfigDialog() {
 			yMax: Number(formData.get("y-max")),
 			precision: Number(formData.get("precision")),
 		})
+
+		setOpen(false)
 	}
 
 	return (
-		<Dialog>
+		<Dialog open={open} onOpenChange={() => setOpen(!open)}>
 			<DialogTrigger asChild>
 				<Button variant="outline" size="icon">
 					<Settings2 />
