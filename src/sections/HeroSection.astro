@@ -1,16 +1,19 @@
 ---
-import ConfigDialog from "@/components/ConfigDialog"
+import BucketConfigDialog from "@/components/BucketConfigDialog"
+import DZIConfigDialog from "@/components/DZIConfigDialog"
 import { dziVisConfig } from "@/configStore"
 
-const $dziVisConfig = dziVisConfig.value
-const precision = $dziVisConfig.precision
+const precision = dziVisConfig.get().precision
 ---
 
 <div class="flex h-fit flex-col justify-between px-4 py-2 text-sm sm:flex-row sm:text-base">
 	<span class="position-info">
-		{`x:${(0.0).toPrecision(precision)}, y:${(0).toPrecision(precision)}`}
+		{`x:${(0.0).toFixed(precision)}, y:${(0).toFixed(precision)}`}
 	</span>
-	<ConfigDialog client:load />
+	<div class="flex flex-row items-center justify-center gap-x-2">
+		<DZIConfigDialog client:load />
+		<BucketConfigDialog client:load />
+	</div>
 </div>
 
 <div id="openseadragon1" class="grid size-full w-full grow"></div>
@@ -18,21 +21,19 @@ const precision = $dziVisConfig.precision
 	import OpenSeadragon, { type PointerMouseTrackerEvent } from "openseadragon"
 	import { bucketConfig, dziVisConfig } from "@/configStore"
 
-	const $dziVisConfig = dziVisConfig.value
-	const $bucketConfig = bucketConfig.value
-	const bucketUrl = `https://${$bucketConfig.domain}/${$bucketConfig.tenant}:${$bucketConfig.name}`
+	const bucketUrl = `${bucketConfig.get().domain}/${bucketConfig.get().tenant}:${bucketConfig.get().name}`
 	const imageFolder = bucketConfig.value.imageFolder
 
 	const viewer = OpenSeadragon({
 		id: "openseadragon1",
 		prefixUrl: "//openseadragon.github.io/openseadragon/images/",
 		tileSources: {
-			height: $dziVisConfig.height,
-			width: $dziVisConfig.width,
-			tileSize: 254,
-			tileOverlap: 1,
+			height: dziVisConfig.get().height,
+			width: dziVisConfig.get().width,
+			tileSize: dziVisConfig.get().tileSize,
+			tileOverlap: dziVisConfig.get().tileOverlap,
 			getTileUrl: (level, x, y) => {
-				const tileUrl = `${bucketUrl}/${imageFolder}/${level}/${x}_${y}.${$bucketConfig.imageFormat}`
+				const tileUrl = `${bucketUrl}/${imageFolder}/${level}/${x}_${y}.${bucketConfig.get().imageFormat}`
 				return tileUrl
 			},
 		},
@@ -54,11 +55,11 @@ const precision = $dziVisConfig.precision
 		const imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
 
 		function mapRange(value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) {
-			return (newMin + ((value - oldMin) / (oldMax - oldMin)) * (newMax - newMin)).toPrecision(15)
+			return (newMin + ((value - oldMin) / (oldMax - oldMin)) * (newMax - newMin)).toFixed(dziVisConfig.get().precision)
 		}
 
-		const x = mapRange(imagePoint.x, 0, $dziVisConfig.width, $dziVisConfig.xMin, $dziVisConfig.xMax)
-		const y = mapRange(imagePoint.y, 0, $dziVisConfig.height, $dziVisConfig.yMax, $dziVisConfig.yMin)
+		const x = mapRange(imagePoint.x, 0, dziVisConfig.get().width, dziVisConfig.get().xMin, dziVisConfig.get().xMax)
+		const y = mapRange(imagePoint.y, 0, dziVisConfig.get().height, dziVisConfig.get().yMax, dziVisConfig.get().yMin)
 
 		return { x, y }
 	}
