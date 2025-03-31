@@ -1,7 +1,8 @@
 ---
 import BucketConfigDialog from "@/components/BucketConfigDialog"
 import DziConfigDialog from "@/components/DziConfigDialog"
-import { dziVisConfig } from "@/configStore"
+import OpenSeaDragonViewer from "@/components/OpenSeaDragonViewer"
+import { bucketConfig, dziVisConfig } from "@/configStore"
 
 const precision = dziVisConfig.get().precision
 ---
@@ -16,13 +17,16 @@ const precision = dziVisConfig.get().precision
 	</div>
 </div>
 
-<div id="openseadragon1" class="grid size-full w-full grow"></div>
+<OpenSeaDragonViewer client:only="react" />
+
+<!-- <div id="openseadragon1" class="grid size-full w-full grow"></div>
 <script>
 	import OpenSeadragon, { type PointerMouseTrackerEvent } from "openseadragon"
 	import { bucketConfig, dziVisConfig } from "@/configStore"
 
-	const bucketUrl = `${bucketConfig.get().domain}/${bucketConfig.get().tenant}:${bucketConfig.get().name}`
-	const imageFolder = bucketConfig.value.imageFolder
+	function getBucketUrl() {
+		return `${bucketConfig.get().domain}/${bucketConfig.get().tenant}:${bucketConfig.get().name}`
+	}
 
 	const viewer = OpenSeadragon({
 		id: "openseadragon1",
@@ -33,7 +37,7 @@ const precision = dziVisConfig.get().precision
 			tileSize: dziVisConfig.get().tileSize,
 			tileOverlap: dziVisConfig.get().tileOverlap,
 			getTileUrl: (level, x, y) => {
-				const tileUrl = `${bucketUrl}/${imageFolder}/${level}/${x}_${y}.${bucketConfig.get().imageFormat}`
+				const tileUrl = `${getBucketUrl()}/${bucketConfig.get().imageFolder}/${level}/${x}_${y}.${bucketConfig.get().imageFormat}`
 				return tileUrl
 			},
 		},
@@ -80,4 +84,4 @@ const precision = dziVisConfig.get().precision
 		positionEl!.textContent = `x:${x}, y:${y} -> copied to clipboard`
 		navigator.clipboard.writeText(`x:${x}, y:${y}`)
 	})
-</script>
+</script> -->
