@@ -35,6 +35,7 @@ export const initialDziVisConfig: DziVisConfig = {
 	precision: 15,
 }
 
+// https://s3.cl2.du.cesnet.cz/1220acb0_52c1_4c07_8198_28e9c41e31ee:test-dzi/log_png.dzi
 export const initialBucketConfig: BucketConfig = {
 	domain: "https://s3.cl2.du.cesnet.cz",
 	tenant: "1220acb0_52c1_4c07_8198_28e9c41e31ee",
