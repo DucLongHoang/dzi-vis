@@ -120,3 +120,7 @@
 		@apply border-border;
 	}
 }
+
+.overlay {
+	@apply bg-green-300 bg-opacity-50;
+}
