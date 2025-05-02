@@ -35,6 +35,7 @@ export default function DziConfigDialog() {
 			yMin: Number(formData.get("y-min")),
 			yMax: Number(formData.get("y-max")),
 			precision: Number(formData.get("precision")),
+			colour: formData.get("background-color")?.toString() || $dziVisConfig.colour,
 		})
 
 		setOpen(false)
@@ -175,6 +176,19 @@ export default function DziConfigDialog() {
 								step={1}
 								min={0}
 								className="col-span-4"
+							/>
+						</div>
+
+						<div className="grid grid-cols-5 items-center gap-4">
+							<Label htmlFor="background-color" className="text-right">
+								Background Color
+							</Label>
+							<Input
+								id="background-color"
+								name="background-color"
+								type="color"
+								defaultValue={$dziVisConfig.colour}
+								className="col-span-2"
 							/>
 						</div>
 					</div>

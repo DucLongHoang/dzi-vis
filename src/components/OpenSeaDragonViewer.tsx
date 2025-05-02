@@ -87,5 +87,12 @@ export default function OpenSeaDragonViewer() {
 		}
 	}, [$bucketConfig, $dziVisConfig])
 
-	return <div id="openseadragon-container" className="grid size-full w-full grow" ref={containerRef}></div>
+	return (
+		<div
+			id="openseadragon-container"
+			className="grid size-full w-full grow bg-black"
+			style={{ backgroundColor: `${$dziVisConfig.colour}` }}
+			ref={containerRef}
+		></div>
+	)
 }

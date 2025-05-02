@@ -2,96 +2,19 @@
 import BucketConfigDialog from "@/components/BucketConfigDialog"
 import DziConfigDialog from "@/components/DziConfigDialog"
 import OpenSeaDragonViewer from "@/components/OpenSeaDragonViewer"
-import { bucketConfig, dziVisConfig } from "@/configStore"
+import { dziVisConfig } from "@/configStore"
 
 const precision = dziVisConfig.get().precision
 ---
 
-<div class="flex h-fit flex-col justify-between px-4 py-2 text-sm sm:flex-row sm:text-base">
+<div class="flex h-fit flex-col justify-between gap-y-2 px-4 py-2 text-sm sm:flex-row sm:items-center sm:text-base">
 	<span class="position-info">
 		{`x:${(0.0).toFixed(precision)}, y:${(0).toFixed(precision)}`}
 	</span>
-	<div class="flex flex-row items-center justify-center gap-x-2">
+	<div class="flex flex-row items-center justify-start gap-x-2">
 		<DziConfigDialog client:load />
 		<BucketConfigDialog client:load />
 	</div>
 </div>
 
 <OpenSeaDragonViewer client:only="react" />
-
-<!-- <div id="openseadragon1" class="grid size-full w-full grow"></div>
-<script>
-	import OpenSeadragon, { type PointerMouseTrackerEvent } from "openseadragon"
-	import { bucketConfig, dziVisConfig } from "@/configStore"
-
-	function getBucketUrl() {
-		return `${bucketConfig.get().domain}/${bucketConfig.get().tenant}:${bucketConfig.get().name}`
-	}
-
-	const viewer = OpenSeadragon({
-		id: "openseadragon1",
-		prefixUrl: "//openseadragon.github.io/openseadragon/images/",
-		tileSources: {
-			height: dziVisConfig.get().height,
-			width: dziVisConfig.get().width,
-			tileSize: dziVisConfig.get().tileSize,
-			tileOverlap: dziVisConfig.get().tileOverlap,
-			getTileUrl: (level, x, y) => {
-				const tileUrl = `${getBucketUrl()}/${bucketConfig.get().imageFolder}/${level}/${x}_${y}.${bucketConfig.get().imageFormat}`
-				return tileUrl
-			},
-		},
-		showNavigator: true,
-		navigatorPosition: "TOP_LEFT",
-		navigationControlAnchor: OpenSeadragon.ControlAnchor.TOP_RIGHT,
-		gestureSettingsMouse: {
-			clickToZoom: false,
-			dblClickToZoom: true,
-		},
-		overlays: [
-			{
-				id: "overlay-lol",
-				px: 0.3,
-				py: 0,
-				width: 1200,
-				height: 1200,
-				className: "bg-green-500",
-			},
-		],
-		// debugMode: true,
-	})
-
-	viewer.canvas.style.cursor = "crosshair"
-	const positionEl = document.querySelector<HTMLSpanElement>(".position-info")
-
-	function getCoordinates(webPoint: OpenSeadragon.Point) {
-		const viewportPoint = viewer.viewport.pointFromPixel(webPoint)
-		const imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint)
-
-		function mapRange(value: number, oldMin: number, oldMax: number, newMin: number, newMax: number) {
-			return (newMin + ((value - oldMin) / (oldMax - oldMin)) * (newMax - newMin)).toFixed(dziVisConfig.get().precision)
-		}
-
-		const x = mapRange(imagePoint.x, 0, dziVisConfig.get().width, dziVisConfig.get().xMin, dziVisConfig.get().xMax)
-		const y = mapRange(imagePoint.y, 0, dziVisConfig.get().height, dziVisConfig.get().yMax, dziVisConfig.get().yMin)
-
-		return { x, y }
-	}
-
-	viewer.addHandler("open", function () {
-		const tracker = new OpenSeadragon.MouseTracker({
-			element: viewer.element,
-			moveHandler: (event) => {
-				const { x, y } = getCoordinates((event as PointerMouseTrackerEvent).position)
-				positionEl!.textContent = `x:${x}, y:${y}`
-			},
-		})
-		tracker.setTracking(true)
-	})
-
-	viewer.addHandler("canvas-click", (event) => {
-		const { x, y } = getCoordinates(event.position)
-		positionEl!.textContent = `x:${x}, y:${y} -> copied to clipboard`
-		navigator.clipboard.writeText(`x:${x}, y:${y}`)
-	})
-</script> -->

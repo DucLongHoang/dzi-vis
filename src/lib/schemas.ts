@@ -18,6 +18,7 @@ export const dziVisConfigSchema = z.object({
 	yMin: z.number(),
 	yMax: z.number(),
 	precision: z.number().int(),
+	colour: z.string().optional(),
 })
 
 export type BucketConfig = z.infer<typeof bucketConfigSchema>
@@ -33,6 +34,7 @@ export const initialDziVisConfig: DziVisConfig = {
 	yMin: 0,
 	yMax: 1,
 	precision: 15,
+	colour: "#ffffff",
 }
 
 // https://s3.cl2.du.cesnet.cz/1220acb0_52c1_4c07_8198_28e9c41e31ee:test-dzi/log_png.dzi
