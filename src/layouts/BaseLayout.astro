@@ -1,12 +1,8 @@
 ---
-// import Footer from "@/layouts/Footer.astro"
-// import Header from "@/layouts/Header.astro"
 import "@/styles/globals.css"
-// import Main from "./Main.astro"
 import APP_CONFIG from "@/config/config"
 import type { OgImage } from "@/lib/types"
 import { Schema } from "astro-seo-schema"
-// import { ClientRouter } from "astro:transitions"
 import I18nClient from "@astrolicious/i18n/components/I18nClient.astro"
 import { getLocale } from "i18n:astro"
 import Head from "@/components/Head.astro"
@@ -124,15 +120,8 @@ const { title, isHomePage }: Props = Astro.props
 		</script> */
 		}
 
-		{/* VIEW TRANSITIONS */}
-		{/* <ClientRouter /> */}
-		{/* Use only without ModeToggle */}
 	</Head>
 	<body id="body" class="flex min-h-svh w-full flex-col bg-background font-mono text-foreground antialiased">
-		{/* <Header /> */}
-		{/* <Main> */}
 		<slot />
-		{/* </Main> */}
-		{/* <Footer /> */}
 	</body>
 </html>

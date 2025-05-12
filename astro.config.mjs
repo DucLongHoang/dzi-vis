@@ -4,7 +4,6 @@ import react from "@astrojs/react"
 import tailwind from "@astrojs/tailwind"
 import sitemap from "@astrojs/sitemap"
 import partytown from "@astrojs/partytown"
-import icon from "astro-icon"
 import robotsTxt from "astro-robots-txt"
 import APP_CONFIG from "./src/config/config"
 import i18n from "@astrolicious/i18n"
@@ -23,7 +22,6 @@ export default defineConfig({
 		port: SERVER_PORT,
 	},
 	integrations: [
-		icon(),
 		react(),
 		partytown(),
 		tailwind({
