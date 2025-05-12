@@ -40,7 +40,8 @@ const { title, isHomePage }: Props = Astro.props
 			<link rel="manifest" href="/site.webmanifest" />
 		</Fragment>
 
-		<!-- <SEO
+		{
+			/* <SEO
       title={title}
       titleDefault={APP_CONFIG.SITE.TITLE}
       titleTemplate={`%s | ${APP_CONFIG.SITE.TITLE_SHORT}`}
@@ -67,7 +68,8 @@ const { title, isHomePage }: Props = Astro.props
         title: APP_CONFIG.SITE.TITLE,
         image: og_image.url,
       }}
-    /> -->
+    /> */
+		}
 
 		{/*  FONTS  */}
 		<link rel="preload" href="/fonts/roboto-slab-v34-latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -91,13 +93,16 @@ const { title, isHomePage }: Props = Astro.props
 		/>
 
 		{/* ANALYTICS */}
-		<!-- <script type="text/partytown" defer is:inline data-domain={APP_CONFIG.SITE.DOMAIN} src="/js/script.js"></script> -->
+		{
+			/* <script type="text/partytown" defer is:inline data-domain={APP_CONFIG.SITE.DOMAIN} src="/js/script.js"></script> */
+		}
 
 		{/* I18N */}
 		<I18nClient />
 
 		{/* THEME */}
-		<!-- <script is:inline>
+		{
+			/* <script is:inline>
 			const theme = (() => {
 				const localStorageTheme = localStorage?.getItem("theme") ?? ""
 				if (["dark", "light"].includes(localStorageTheme)) {
@@ -116,17 +121,18 @@ const { title, isHomePage }: Props = Astro.props
 			}
 
 			window.localStorage.setItem("theme", theme)
-		</script> -->
+		</script> */
+		}
 
 		{/* VIEW TRANSITIONS */}
 		{/* <ClientRouter /> */}
 		{/* Use only without ModeToggle */}
 	</Head>
 	<body id="body" class="flex min-h-svh w-full flex-col bg-background font-mono text-foreground antialiased">
-		<!-- <Header /> -->
-		<!-- <Main> -->
+		{/* <Header /> */}
+		{/* <Main> */}
 		<slot />
-		<!-- </Main> -->
-		<!-- <Footer /> -->
+		{/* </Main> */}
+		{/* <Footer /> */}
 	</body>
 </html>

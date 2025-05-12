@@ -1,21 +1,24 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import HeroSection from "@/sections/HeroSection.astro"
-// import ServicesSection from "@/sections/ServicesSection.astro"
-// import AboutSection from "@/sections/AboutSection.astro"
-// import ContactSection from "@/sections/ContactSection.astro"
-// import PricingSection from "@/sections/PricingSection.astro"
-// import GallerySection from "@/sections/GallerySection.astro"
-// import ReferralsSection from "@/sections/ReferralsSection.astro"
+import BucketConfigDialog from "@/components/BucketConfigDialog"
+import DziConfigDialog from "@/components/DziConfigDialog"
+import OpenSeaDragonViewer from "@/components/OpenSeaDragonViewer"
+import { dziVisConfig } from "@/configStore"
 import { t } from "i18n:astro"
+
+const precision = dziVisConfig.get().precision
 ---
 
 <BaseLayout title={t("title")} isHomePage>
-	<HeroSection />
-	<!-- <ServicesSection />
-	<AboutSection />
-	<PricingSection />
-	<GallerySection />
-	<ReferralsSection />
-	<ContactSection /> -->
+	<div class="flex h-fit flex-col justify-between gap-y-2 px-4 py-2 text-sm sm:flex-row sm:items-center sm:text-base">
+		<span class="position-info">
+			{`x:${(0.0).toFixed(precision)}, y:${(0).toFixed(precision)}`}
+		</span>
+		<div class="flex flex-row items-center justify-start gap-x-2">
+			<DziConfigDialog client:load />
+			<BucketConfigDialog client:load />
+		</div>
+	</div>
+
+	<OpenSeaDragonViewer client:only="react" />
 </BaseLayout>

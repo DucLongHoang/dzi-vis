@@ -1,7 +1,7 @@
 {
-	"name": "KIV",
+	"name": "KIV UWB",
 	"title": "DZI Visualization",
-	"description": "",
+	"description": "DZI Visualization built with OpenSeaDragon, Astro and S3.",
 	"city": "Pilsen",
 	"nav": {
 		"home": "Home",

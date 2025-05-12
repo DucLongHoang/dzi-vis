@@ -1,7 +1,7 @@
 {
-	"name": "KIV",
+	"name": "KIV ZČU",
 	"title": "DZI Vizualizace",
-	"description": "",
+	"description": "DZI vizualizace postavena pomocí OpenSeaDragon, Astro a S3.",
 	"city": "Plzeň",
 	"nav": {
 		"home": "Domů",
