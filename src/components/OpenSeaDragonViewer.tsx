@@ -44,6 +44,7 @@ export default function OpenSeaDragonViewer() {
 			})
 
 			viewerRef.current.canvas.style.cursor = "crosshair"
+			;(containerRef.current.firstElementChild as HTMLElement).style.mixBlendMode = "darken"
 
 			const positionEl = document.querySelector<HTMLSpanElement>(".position-info")
 

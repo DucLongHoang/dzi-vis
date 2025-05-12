@@ -53,6 +53,9 @@ export default function BucketConfigDialog() {
 				<DialogHeader>
 					<DialogTitle>Bucket config</DialogTitle>
 					<DialogDescription>Bucket URL = Domain/Tenant:Name</DialogDescription>
+					<DialogDescription className="text-xs">
+						{$bucketConfig.domain}/{$bucketConfig.tenant}:{$bucketConfig.name}
+					</DialogDescription>
 				</DialogHeader>
 				<form ref={formRef} onSubmit={handleSubmit}>
 					<div className="grid gap-4 py-4">
