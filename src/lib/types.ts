@@ -14,19 +14,3 @@ export type LinkItem = {
 	children?: LinkItem[]
 	isCta?: boolean
 }
-
-export enum Day {
-	Monday = "Monday",
-	Tuesday = "Tuesday",
-	Wednesday = "Wednesday",
-	Thursday = "Thursday",
-	Friday = "Friday",
-	Saturday = "Saturday",
-	Sunday = "Sunday",
-}
-
-export enum Currency {
-	USD = "$",
-	EUR = "€",
-	CZK = "Kč",
-}

@@ -31,9 +31,8 @@ const APP_CONFIG = {
 		LOCALES: {
 			cs: "cs-CZ",
 			en: "en-US",
-			de: "de-DE",
 		},
-		LOCALES_ARRAY: ["cs", "en", "de"],
+		LOCALES_ARRAY: ["cs", "en"],
 	},
 }
 

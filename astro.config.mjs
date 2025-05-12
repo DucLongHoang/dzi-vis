@@ -41,37 +41,10 @@ export default defineConfig({
 				"/o-nas": {
 					cs: "/o-nas",
 					en: "/about-us",
-					de: "/uber-uns",
 				},
 				"/kontakt": {
 					cs: "/kontakt",
 					en: "/contact",
-					de: "/kontakt",
-				},
-				"/sluzby": {
-					cs: "/sluzby",
-					en: "/services",
-					de: "/dienstleistungen",
-				},
-				"/dekujeme": {
-					cs: "/dekujeme",
-					en: "/thank-you",
-					de: "/danke",
-				},
-				"/galerie": {
-					cs: "/galerie",
-					en: "/gallery",
-					de: "/galerie",
-				},
-				"/reference": {
-					cs: "/reference",
-					en: "/references",
-					de: "/referenzen",
-				},
-				"/blog/[slug]": {
-					cs: "/blog/[slug]",
-					en: "/blog/[slug]",
-					de: "/blog/[slug]",
 				},
 			},
 		}),
@@ -79,7 +52,7 @@ export default defineConfig({
 			policy: [
 				{
 					userAgent: "*",
-					disallow: ["/admin", "/thank-you", "/dekujeme", "/dekuji", "/danke", "/~partytown/"],
+					disallow: ["/admin", "/thank-you", "/dekujeme", "/dekuji", "/~partytown/"],
 				},
 			],
 		}),
@@ -88,13 +61,7 @@ export default defineConfig({
 				defaultLocale: APP_CONFIG.I18N.DEFAULT_LOCALE,
 				locales: APP_CONFIG.I18N.LOCALES,
 			},
-			filter: (page) =>
-				!page.includes("admin") &&
-				!page.includes("thank-you") &&
-				!page.includes("dekujeme") &&
-				!page.includes("dekuji") &&
-				!page.includes("danke") &&
-				!page.includes("menu"),
+			filter: (page) => !page.includes("admin"),
 		}),
 	],
 })
