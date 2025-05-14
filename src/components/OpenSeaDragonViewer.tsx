@@ -91,8 +91,16 @@ export default function OpenSeaDragonViewer() {
 	return (
 		<div
 			id="openseadragon-container"
-			className="grid size-full w-full grow bg-black"
-			style={{ backgroundColor: `${$dziVisConfig.colour}` }}
+			className="grid size-full w-full grow"
+			style={
+				$dziVisConfig.transparent
+					? {
+							backgroundImage: "url(src/images/checkered-bg.jpg)",
+							backgroundRepeat: "repeat",
+							backgroundSize: "100px",
+						}
+					: { backgroundColor: `${$dziVisConfig.colour}` }
+			}
 			ref={containerRef}
 		></div>
 	)

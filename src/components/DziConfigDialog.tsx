@@ -8,6 +8,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useStore } from "@nanostores/react"
@@ -36,6 +37,7 @@ export default function DziConfigDialog() {
 			yMax: Number(formData.get("y-max")),
 			precision: Number(formData.get("precision")),
 			colour: formData.get("background-color")?.toString() || $dziVisConfig.colour,
+			transparent: formData.get("transparent") === "on",
 		})
 
 		setOpen(false)
@@ -190,9 +192,13 @@ export default function DziConfigDialog() {
 								defaultValue={$dziVisConfig.colour}
 								className="col-span-2"
 							/>
+
+							<div className="flex flex-row items-center gap-x-2">
+								<Checkbox id="transparent" name="transparent" defaultChecked={$dziVisConfig.transparent} />
+								<Label htmlFor="transparent">Transparent</Label>
+							</div>
 						</div>
 					</div>
-
 					<DialogFooter>
 						<Button type="submit">Save changes</Button>
 					</DialogFooter>
