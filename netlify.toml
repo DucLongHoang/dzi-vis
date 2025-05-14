@@ -11,8 +11,8 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = '''
       default-src 'self';
-      script-src 'self';
-      style-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline';
       font-src 'self';
       connect-src 'self';
       img-src 'self' https://openseadragon.github.io https://dzi-bucket.duclonghoang.com https://s3.cl2.du.cesnet.cz;
