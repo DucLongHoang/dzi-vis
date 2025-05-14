@@ -4,10 +4,6 @@ export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
 		extend: {
-			fontFamily: {
-				roboto: ["Roboto", "sans-serif"],
-				"roboto-slab": ["Roboto Slab", "serif"],
-			},
 			borderRadius: {
 				lg: "var(--radius)",
 				md: "calc(var(--radius) - 2px)",

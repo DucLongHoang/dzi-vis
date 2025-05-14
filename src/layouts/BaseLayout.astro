@@ -1,8 +1,8 @@
 ---
 import "@/styles/globals.css"
 import APP_CONFIG from "@/config/config"
-import type { OgImage } from "@/lib/types"
-import { Schema } from "astro-seo-schema"
+// import type { OgImage } from "@/lib/types"
+// import { Schema } from "astro-seo-schema"
 import I18nClient from "@astrolicious/i18n/components/I18nClient.astro"
 import { getLocale } from "i18n:astro"
 import Head from "@/components/Head.astro"
@@ -12,14 +12,14 @@ type Props = {
 	isHomePage?: boolean
 }
 
-const og_image: OgImage = {
-	url: `${APP_CONFIG.SITE.URL}/images/og_image.jpeg`,
-	secureUrl: `${APP_CONFIG.SITE.URL}/images/og_image.jpeg`,
-	alt: APP_CONFIG.SITE.TITLE,
-	width: 1200,
-	height: 630,
-	type: "image/jpeg",
-}
+// const og_image: OgImage = {
+// 	url: `${APP_CONFIG.SITE.URL}/images/og_image.jpeg`,
+// 	secureUrl: `${APP_CONFIG.SITE.URL}/images/og_image.jpeg`,
+// 	alt: APP_CONFIG.SITE.TITLE,
+// 	width: 1200,
+// 	height: 630,
+// 	type: "image/jpeg",
+// }
 
 const { title, isHomePage }: Props = Astro.props
 ---
@@ -36,48 +36,8 @@ const { title, isHomePage }: Props = Astro.props
 			<link rel="manifest" href="/site.webmanifest" />
 		</Fragment>
 
-		{
-			/* <SEO
-      title={title}
-      titleDefault={APP_CONFIG.SITE.TITLE}
-      titleTemplate={`%s | ${APP_CONFIG.SITE.TITLE_SHORT}`}
-      description={APP_CONFIG.SITE.DESCRIPTION}
-      openGraph={{
-        basic: {
-          title: APP_CONFIG.SITE.TITLE,
-          url: APP_CONFIG.SITE.URL,
-          type: "website",
-          image: og_image.url,
-        },
-        optional: {
-          description: APP_CONFIG.SITE.DESCRIPTION,
-          siteName: APP_CONFIG.SITE.TITLE,
-          locale: APP_CONFIG.I18N.LOCALES.cs,
-        },
-        image: {
-          ...og_image,
-        },
-      }}
-      twitter={{
-        card: "summary_large_image",
-        description: APP_CONFIG.SITE.DESCRIPTION,
-        title: APP_CONFIG.SITE.TITLE,
-        image: og_image.url,
-      }}
-    /> */
-		}
-
-		{/*  FONTS  */}
-		<link rel="preload" href="/fonts/roboto-slab-v34-latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/roboto-slab-v34-latin-ext-700.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/roboto-v47-latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/roboto-v47-latin-ext-italic.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/roboto-v47-latin-ext-500.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/roboto-v47-latin-ext-600.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/roboto-v47-latin-ext-700.woff2" as="font" type="font/woff2" crossorigin />
-
 		{/* STRUCTURED DATA */}
-		<Schema
+		<!-- <Schema
 			item={{
 				"@context": "https://schema.org",
 				"@type": "Person",
@@ -86,39 +46,10 @@ const { title, isHomePage }: Props = Astro.props
 				image: og_image.url,
 				sameAs: [APP_CONFIG.SOCIAL.TWITTER, APP_CONFIG.SOCIAL.LINKEDIN, APP_CONFIG.SOCIAL.GITHUB],
 			}}
-		/>
-
-		{/* ANALYTICS */}
-		{
-			/* <script type="text/partytown" defer is:inline data-domain={APP_CONFIG.SITE.DOMAIN} src="/js/script.js"></script> */
-		}
+		/> -->
 
 		{/* I18N */}
 		<I18nClient />
-
-		{/* THEME */}
-		{
-			/* <script is:inline>
-			const theme = (() => {
-				const localStorageTheme = localStorage?.getItem("theme") ?? ""
-				if (["dark", "light"].includes(localStorageTheme)) {
-					return localStorageTheme
-				}
-				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-					return "dark"
-				}
-				return "light"
-			})()
-
-			if (theme === "light") {
-				document.documentElement.classList.remove("dark")
-			} else {
-				document.documentElement.classList.add("dark")
-			}
-
-			window.localStorage.setItem("theme", theme)
-		</script> */
-		}
 	</Head>
 	<body id="body" class="flex min-h-svh w-full flex-col bg-background font-mono text-foreground antialiased">
 		<slot />

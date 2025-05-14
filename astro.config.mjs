@@ -35,22 +35,12 @@ export default defineConfig({
 				data: true,
 				paths: true,
 			},
-			pages: {
-				"/o-nas": {
-					cs: "/o-nas",
-					en: "/about-us",
-				},
-				"/kontakt": {
-					cs: "/kontakt",
-					en: "/contact",
-				},
-			},
 		}),
 		robotsTxt({
 			policy: [
 				{
 					userAgent: "*",
-					disallow: ["/admin", "/thank-you", "/dekujeme", "/dekuji", "/~partytown/"],
+					disallow: ["/~partytown/"],
 				},
 			],
 		}),
@@ -59,7 +49,6 @@ export default defineConfig({
 				defaultLocale: APP_CONFIG.I18N.DEFAULT_LOCALE,
 				locales: APP_CONFIG.I18N.LOCALES,
 			},
-			filter: (page) => !page.includes("admin"),
 		}),
 	],
 })

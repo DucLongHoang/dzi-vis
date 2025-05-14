@@ -5,25 +5,15 @@
   command = "pnpm run build"
   environment = { NODE_VERSION = "20.11.0" }
 
-[[redirects]]
-  from = "/js/script.js"
-  to = "https://analytics.duclonghoang.com/js/script.hash.js"
-  status = 200
-
-[[redirects]]
-  from = "/api/event"
-  to = "https://analytics.duclonghoang.com/api/event"
-  status = 200
-
 [[headers]]
   for = "/*"
   [headers.values]
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Content-Security-Policy = '''
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://analytics.duclonghoang.com/;
-      style-src 'self' 'unsafe-inline' https://astro.duclonghoang.com https://fonts.googleapis.com;
-      font-src 'self' https://fonts.gstatic.com;
+      script-src 'self';
+      style-src 'self';
+      font-src 'self';
       connect-src 'self';
       img-src 'self' https://openseadragon.github.io https://dzi-bucket.duclonghoang.com https://s3.cl2.du.cesnet.cz;
       media-src blob:;

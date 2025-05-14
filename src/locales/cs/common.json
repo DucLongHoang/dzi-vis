@@ -4,68 +4,8 @@
 	"description": "DZI vizualizace postavena pomocí OpenSeaDragon, Astro a S3.",
 	"city": "Plzeň",
 	"nav": {
-		"home": "Domů",
-		"about": "O nás",
-		"portfolio": "Portfolio",
-		"contact": "Kontakt",
-		"referrals": "Reference",
-		"services": "Služby",
-		"gallery": "Galerie",
-		"blog": "Blog",
-		"cta": "Domluvit schůzku"
+		"home": "Domů"
 	},
-	"hero": {
-		"title": "",
-		"subtitle": "",
-		"cta": ""
-	},
-	"services": {
-		"title": "Služby",
-		"subtitle": "",
-		"items": [
-			{
-				"title": "Služba 1",
-				"description": "Popisek ke službě 1"
-			},
-			{
-				"title": "Služba 2",
-				"description": "Popisek ke službě 2"
-			},
-			{
-				"title": "Služba 3",
-				"description": "Popisek ke službě 3"
-			},
-			{
-				"title": "Služba 4",
-				"description": "Popisek ke službě 4"
-			},
-			{
-				"title": "Služba 5",
-				"description": "Popisek ke službě 5"
-			},
-			{
-				"title": "Služba 6",
-				"description": "Popisek ke službě 6"
-			}
-		]
-	},
-	"about_title": "O nás",
-	"about_subtitle": "",
-	"about_badge": "",
-	"about_cv": "",
-	"about_education": "",
-	"about_master_degree": "",
-	"about_bachelor_degree": "",
-	"about_university": "",
-	"about_present": "",
-	"about_work": "",
-	"pricing_title": "",
-	"pricing_subtitle": "",
-	"pricing_select": "",
-	"contact_title": "Kontakt",
-	"contact_subtitle": "",
-	"contact_email": "",
-	"contact_phone": "",
 	"form": {
 		"name": {
 			"label": "Jméno",
@@ -84,24 +24,5 @@
 			"placeholder": "Dobrý den..."
 		},
 		"submit": "Odeslat"
-	},
-	"footer_links": "Odkazy",
-	"footer_services": "Služby",
-	"footer_projects": "Projekty",
-	"footer_socials": "Sociální sítě",
-	"footer_all_rights": "Všechna práva vyhrazena",
-	"footer_made_by": "Ručně nakódoval: ",
-	"footer_contacts": "Kontakty",
-	"_404_title": "404",
-	"_404_subtext": "Stránka nenalezena",
-	"_404_back": "Vraťte se prosím na hlavní stránku",
-	"_404_here": "zde",
-	"thank_you_title": "Děkuji!",
-	"thank_you_subtext": "Vaši zprávu jsem v pořádku přijal.",
-	"thank_you_back": "Vraťte se prosím na hlavní stránku",
-	"thank_you_here": "zde",
-	"blogpost": {
-		"read_more": "Přečíst článek",
-		"title": "Článek"
 	}
 }

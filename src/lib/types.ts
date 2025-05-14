@@ -6,11 +6,3 @@ export type OgImage = {
 	height: number
 	type: string
 }
-
-export type LinkItem = {
-	href: string
-	title: string
-	description?: string
-	children?: LinkItem[]
-	isCta?: boolean
-}
