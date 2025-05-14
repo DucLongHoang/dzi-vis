@@ -95,9 +95,8 @@ export default function OpenSeaDragonViewer() {
 			style={
 				$dziVisConfig.transparent
 					? {
-							backgroundImage: "url(src/images/checkered-bg.jpg)",
-							backgroundRepeat: "repeat",
-							backgroundSize: "100px",
+							background:
+								"conic-gradient(#fff 90deg, #ccc 90deg 180deg, #fff 180deg 270deg, #ccc 270deg) top left / 20px 20px repeat",
 						}
 					: { backgroundColor: `${$dziVisConfig.colour}` }
 			}
